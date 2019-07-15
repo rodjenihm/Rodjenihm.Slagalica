@@ -16,5 +16,16 @@ namespace Rodjenihm.Slagalica
         {
             InitializeComponent();
         }
+
+        private void BtnPlay_Click(object sender, EventArgs e)
+        {
+            var playForm = new PlayForm();
+            playForm.Show();
+        }
+
+        private void BtnSolve_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
