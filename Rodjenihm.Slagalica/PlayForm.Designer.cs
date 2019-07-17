@@ -28,25 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gbInputLetters = new System.Windows.Forms.GroupBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlayForm));
+            this.gbRandomLetters = new System.Windows.Forms.GroupBox();
             this.SuspendLayout();
             // 
-            // gbInputLetters
+            // gbRandomLetters
             // 
-            this.gbInputLetters.Location = new System.Drawing.Point(23, 61);
-            this.gbInputLetters.Name = "gbInputLetters";
-            this.gbInputLetters.Size = new System.Drawing.Size(725, 100);
-            this.gbInputLetters.TabIndex = 0;
-            this.gbInputLetters.TabStop = false;
-            this.gbInputLetters.Text = "Slova";
+            this.gbRandomLetters.Location = new System.Drawing.Point(30, 61);
+            this.gbRandomLetters.Name = "gbRandomLetters";
+            this.gbRandomLetters.Size = new System.Drawing.Size(725, 100);
+            this.gbRandomLetters.TabIndex = 0;
+            this.gbRandomLetters.TabStop = false;
+            this.gbRandomLetters.Text = "Slova";
             // 
             // PlayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.gbInputLetters);
+            this.ClientSize = new System.Drawing.Size(784, 461);
+            this.Controls.Add(this.gbRandomLetters);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "PlayForm";
             this.Text = "Slagalica - Igraj";
@@ -57,6 +59,6 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox gbInputLetters;
+        private System.Windows.Forms.GroupBox gbRandomLetters;
     }
 }
