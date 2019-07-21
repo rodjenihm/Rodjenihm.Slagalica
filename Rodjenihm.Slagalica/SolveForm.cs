@@ -49,9 +49,9 @@ namespace Rodjenihm.Slagalica
         {
             foreach (var inputLetter in txtInputLetters)
             {
-                inputLetter.Text = string.Empty;
+                inputLetter.Clear();
             }
-            txtResult.Text = string.Empty;
+            txtResult.Clear();
             btnSolve.Enabled = true;
         }
 
@@ -59,7 +59,6 @@ namespace Rodjenihm.Slagalica
         {
             if (ValidateInput())
             {
-
                 btnSolve.Enabled = false;
                 var letters = new List<string>(inputCount);
                 foreach (var inputLetter in txtInputLetters)
@@ -95,6 +94,10 @@ namespace Rodjenihm.Slagalica
             {
                 var validLetter = regex.Match(inputLetter.Text).Success;
                 valid &= validLetter;
+                if (!validLetter)
+                {
+                    inputLetter.Clear();
+                }
             }
             return valid;
         }
