@@ -1,27 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace Rodjenihm.Slagalica.CustomControls
 {
-    public class InputLetter : TextBox
+    public class InputLetterTextBox : TextBox
     {
         private TextBox innerTextBox;
-        public static readonly List<string> allowedInput = new List<string>
-        {
-            "a", "b", "c", "č", "ć",
-            "d", "dž", "đ", "e", "f",
-            "g", "h", "i", "j", "k",
-            "l", "lj", "m", "n", "nj",
-            "o", "p", "r", "s", "š",
-            "t", "u", "v", "z", "ž",
-        };
-        public string PreviousText { get; set; } = string.Empty;
 
-        public InputLetter()
+        public InputLetterTextBox()
         {
             InitializeComponent();
         }

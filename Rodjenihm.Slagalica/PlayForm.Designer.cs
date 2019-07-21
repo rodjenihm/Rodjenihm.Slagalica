@@ -30,28 +30,69 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlayForm));
             this.gbRandomLetters = new System.Windows.Forms.GroupBox();
+            this.btnStart = new System.Windows.Forms.Button();
+            this.btnStop = new System.Windows.Forms.Button();
+            this.pbTimeLeft = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // gbRandomLetters
             // 
-            this.gbRandomLetters.Location = new System.Drawing.Point(30, 61);
+            this.gbRandomLetters.Location = new System.Drawing.Point(42, 20);
             this.gbRandomLetters.Name = "gbRandomLetters";
-            this.gbRandomLetters.Size = new System.Drawing.Size(725, 100);
+            this.gbRandomLetters.Size = new System.Drawing.Size(600, 100);
             this.gbRandomLetters.TabIndex = 0;
             this.gbRandomLetters.TabStop = false;
             this.gbRandomLetters.Text = "Slova";
+            // 
+            // btnStart
+            // 
+            this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStart.Location = new System.Drawing.Point(40, 185);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(75, 30);
+            this.btnStart.TabIndex = 1;
+            this.btnStart.TabStop = false;
+            this.btnStart.Text = "Start";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.BtnStart_Click);
+            // 
+            // btnStop
+            // 
+            this.btnStop.Enabled = false;
+            this.btnStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStop.Location = new System.Drawing.Point(140, 185);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(75, 30);
+            this.btnStop.TabIndex = 2;
+            this.btnStop.TabStop = false;
+            this.btnStop.Text = "Stop";
+            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.BtnStop_Click);
+            // 
+            // pbTimeLeft
+            // 
+            this.pbTimeLeft.Location = new System.Drawing.Point(40, 145);
+            this.pbTimeLeft.Maximum = 90;
+            this.pbTimeLeft.Name = "pbTimeLeft";
+            this.pbTimeLeft.Size = new System.Drawing.Size(602, 20);
+            this.pbTimeLeft.Step = 1;
+            this.pbTimeLeft.TabIndex = 3;
             // 
             // PlayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 461);
+            this.ClientSize = new System.Drawing.Size(684, 311);
+            this.Controls.Add(this.pbTimeLeft);
+            this.Controls.Add(this.btnStop);
+            this.Controls.Add(this.btnStart);
             this.Controls.Add(this.gbRandomLetters);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "PlayForm";
             this.Text = "Slagalica - Igraj";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PlayForm_FormClosing);
             this.Load += new System.EventHandler(this.PlayForm_Load);
             this.ResumeLayout(false);
 
@@ -60,5 +101,8 @@
         #endregion
 
         private System.Windows.Forms.GroupBox gbRandomLetters;
+        private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.ProgressBar pbTimeLeft;
     }
 }

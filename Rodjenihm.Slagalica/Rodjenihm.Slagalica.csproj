@@ -70,6 +70,7 @@
     <Compile Include="SolveForm.Designer.cs">
       <DependentUpon>SolveForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities.cs" />
     <Compile Include="WordList.cs" />
     <EmbeddedResource Include="CustomControls\InputLetter.resx">
       <DependentUpon>InputLetter.cs</DependentUpon>
