@@ -70,11 +70,14 @@
             // 
             // txtResult
             // 
-            this.txtResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtResult.BackColor = System.Drawing.Color.Ivory;
+            this.txtResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtResult.Location = new System.Drawing.Point(40, 210);
+            this.txtResult.Multiline = true;
             this.txtResult.Name = "txtResult";
             this.txtResult.ReadOnly = true;
-            this.txtResult.Size = new System.Drawing.Size(400, 26);
+            this.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtResult.Size = new System.Drawing.Size(400, 90);
             this.txtResult.TabIndex = 3;
             this.txtResult.TabStop = false;
             this.txtResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

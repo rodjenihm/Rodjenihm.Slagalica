@@ -32,7 +32,10 @@
             this.gbRandomLetters = new System.Windows.Forms.GroupBox();
             this.btnStart = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
+            this.txtUserWord = new System.Windows.Forms.TextBox();
+            this.txtComputerWord = new System.Windows.Forms.TextBox();
             this.pbTimeLeft = new System.Windows.Forms.ProgressBar();
+            this.btnSubmit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // gbRandomLetters
@@ -69,20 +72,53 @@
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Click += new System.EventHandler(this.BtnStop_Click);
             // 
+            // txtUserWord
+            // 
+            this.txtUserWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUserWord.Location = new System.Drawing.Point(42, 225);
+            this.txtUserWord.Name = "txtUserWord";
+            this.txtUserWord.Size = new System.Drawing.Size(310, 26);
+            this.txtUserWord.TabIndex = 4;
+            this.txtUserWord.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtComputerWord
+            // 
+            this.txtComputerWord.BackColor = System.Drawing.Color.Ivory;
+            this.txtComputerWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtComputerWord.Location = new System.Drawing.Point(42, 257);
+            this.txtComputerWord.Name = "txtComputerWord";
+            this.txtComputerWord.ReadOnly = true;
+            this.txtComputerWord.Size = new System.Drawing.Size(310, 26);
+            this.txtComputerWord.TabIndex = 6;
+            // 
             // pbTimeLeft
             // 
-            this.pbTimeLeft.Location = new System.Drawing.Point(40, 145);
+            this.pbTimeLeft.Location = new System.Drawing.Point(42, 145);
             this.pbTimeLeft.Maximum = 90;
             this.pbTimeLeft.Name = "pbTimeLeft";
             this.pbTimeLeft.Size = new System.Drawing.Size(602, 20);
             this.pbTimeLeft.Step = 1;
             this.pbTimeLeft.TabIndex = 3;
             // 
+            // btnSubmit
+            // 
+            this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmit.Location = new System.Drawing.Point(373, 225);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(75, 26);
+            this.btnSubmit.TabIndex = 7;
+            this.btnSubmit.Text = "Potvrdi";
+            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.Button1_Click);
+            // 
             // PlayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 311);
+            this.Controls.Add(this.btnSubmit);
+            this.Controls.Add(this.txtComputerWord);
+            this.Controls.Add(this.txtUserWord);
             this.Controls.Add(this.pbTimeLeft);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnStart);
@@ -95,6 +131,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PlayForm_FormClosing);
             this.Load += new System.EventHandler(this.PlayForm_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -103,6 +140,9 @@
         private System.Windows.Forms.GroupBox gbRandomLetters;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.TextBox txtUserWord;
+        private System.Windows.Forms.TextBox txtComputerWord;
         private System.Windows.Forms.ProgressBar pbTimeLeft;
+        private System.Windows.Forms.Button btnSubmit;
     }
 }

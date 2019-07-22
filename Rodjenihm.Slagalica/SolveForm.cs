@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Rodjenihm.Slagalica
@@ -21,7 +20,6 @@ namespace Rodjenihm.Slagalica
         private void SolveForm_Load(object sender, EventArgs e)
         {
             txtInputLetters = new List<InputLetterTextBox>(inputCount);
-
             for (int i = 0; i < txtInputLetters.Capacity; i++)
             {
                 txtInputLetters.Add(new InputLetterTextBox()
@@ -35,7 +33,6 @@ namespace Rodjenihm.Slagalica
                     Font = new Font(Font.FontFamily, 12.0f, FontStyle.Bold),
                 });
                 txtInputLetters[i].TextChanged += InputLetter_TextChanged;
-
                 gbInputLetters.Controls.Add(txtInputLetters[i]);
             }
         }
@@ -57,7 +54,7 @@ namespace Rodjenihm.Slagalica
 
         private void BtnSolve_Click(object sender, EventArgs e)
         {
-            if (ValidateInput())
+            if (Utilities.ValidateInput(txtInputLetters))
             {
                 btnSolve.Enabled = false;
                 var letters = new List<string>(inputCount);
@@ -68,38 +65,18 @@ namespace Rodjenihm.Slagalica
                         .Replace("lj", "2")
                         .Replace("nj", "3"));
                 }
-                foreach (var word in WordList.Instance.Words)
+                foreach (var solution in WordList.Instance.Words.Where(w => Utilities.IsMatch(w, letters)).Take(1)) // Take(1) za samo jednu rec
                 {
-                    if (Utilities.IsMatch(word, letters))
-                    {
-                        txtResult.Text = word
-                            .Replace("1", "dž")
-                            .Replace("2", "lj")
-                            .Replace("3", "nj");
-                        break;
-                    }
+                    txtResult.Text += solution
+                        .Replace("1", "dž")
+                        .Replace("2", "lj")
+                        .Replace("3", "nj") + "\r\n";
                 }
             }
             else
             {
-                MessageBox.Show(this.Owner, "Ulazni podaci nisu ispravni\nUnesite samo slova srpske abecede.", "Neispravan unos");
+                MessageBox.Show(Owner, "Ulazni podaci nisu ispravni\nUnesite samo slova srpske abecede.", "Neispravan unos");
             }
-        }
-
-        private bool ValidateInput()
-        {
-            var valid = true;
-            var regex = new Regex(@"\b([abcčćdđefghijklmnoprsštuvzž]|(dž)|(lj)|(nj))\b");
-            foreach (var inputLetter in txtInputLetters)
-            {
-                var validLetter = regex.Match(inputLetter.Text).Success;
-                valid &= validLetter;
-                if (!validLetter)
-                {
-                    inputLetter.Clear();
-                }
-            }
-            return valid;
         }
     }
 }

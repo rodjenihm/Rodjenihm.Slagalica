@@ -73,7 +73,7 @@ namespace Rodjenihm.Slagalica
                         btnStart.Enabled = true;
                         btnStop.Enabled = false;
                         progressTimer.Enabled = false;
-                        MessageBox.Show("You failed!");
+                        MessageBox.Show("Totalan promašaj! Epic fail!!");
                     }
                     else
                     {
@@ -94,14 +94,13 @@ namespace Rodjenihm.Slagalica
             idx = 0;
             btnStart.Enabled = false;
             btnStop.Enabled = true;
+            pbTimeLeft.Value = pbTimeLeft.Minimum;
             pickerTimer.Enabled = true;
 
             foreach (var inputLetter in txtInputLetters)
             {
                 inputLetter.Clear();
             }
-
-            pbTimeLeft.Value = pbTimeLeft.Minimum;
         }
 
         private void BtnStop_Click(object sender, EventArgs e)
@@ -112,6 +111,16 @@ namespace Rodjenihm.Slagalica
                 pickerTimer.Enabled = false;
                 progressTimer.Enabled = true;
             }
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            var userWord = txtUserWord.Text
+                .Replace("dž", "1")
+                .Replace("lj", "2")
+                .Replace("nj", "3");
+
+
         }
     }
 }
