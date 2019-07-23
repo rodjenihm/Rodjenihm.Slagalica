@@ -39,7 +39,10 @@ namespace Rodjenihm.Slagalica
 
         private void InputLetter_TextChanged(object sender, EventArgs e)
         {
-
+            var inputLetter = sender as InputLetterTextBox;
+            inputLetter.Text = inputLetter.Text.ToLower();
+            inputLetter.SelectionStart = inputLetter.Text.Length;
+            inputLetter.SelectionLength = 0;
         }
 
         private void BtnReset_Click(object sender, EventArgs e)
@@ -49,14 +52,13 @@ namespace Rodjenihm.Slagalica
                 inputLetter.Clear();
             }
             txtResult.Clear();
-            btnSolve.Enabled = true;
         }
 
         private void BtnSolve_Click(object sender, EventArgs e)
         {
             if (Utilities.ValidateInput(txtInputLetters))
             {
-                btnSolve.Enabled = false;
+                txtResult.Clear();
                 var letters = new List<string>(inputCount);
                 foreach (var inputLetter in txtInputLetters)
                 {

@@ -28,7 +28,7 @@ namespace Rodjenihm.Slagalica
         public static bool ValidateInput(IEnumerable<InputLetterTextBox> inputLetters)
         {
             var valid = true;
-            var regex = new Regex(@"\b([abcčćdđefghijklmnoprsštuvzž]|(dž)|(lj)|(nj))\b");
+            var regex = new Regex(@"^([abcčćdđefghijklmnoprsštuvzž]|dž|lj|nj)$", RegexOptions.IgnoreCase);
             foreach (var inputLetter in inputLetters)
             {
                 var validLetter = regex.Match(inputLetter.Text).Success;

@@ -113,14 +113,23 @@ namespace Rodjenihm.Slagalica
             }
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void ButtonSubmit_Click(object sender, EventArgs e)
         {
+            progressTimer.Enabled = false;
+            btnStart.Enabled = true;
             var userWord = txtUserWord.Text
-                .Replace("dž", "1")
-                .Replace("lj", "2")
-                .Replace("nj", "3");
+              .Replace("dž", "1")
+              .Replace("lj", "2")
+              .Replace("nj", "3");
 
-
+            if (WordList.Instance.Words.Contains(userWord))
+            {
+                MessageBox.Show($"Bravo. Pronasli ste reč od {userWord.Length} slova!", "", MessageBoxButtons.YesNo);
+            }
+            else
+            {
+                MessageBox.Show("Žao nam je. Unesena reč nije u rečniku.");
+            }
         }
     }
 }

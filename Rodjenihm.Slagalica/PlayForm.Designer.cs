@@ -109,7 +109,7 @@
             this.btnSubmit.TabIndex = 7;
             this.btnSubmit.Text = "Potvrdi";
             this.btnSubmit.UseVisualStyleBackColor = true;
-            this.btnSubmit.Click += new System.EventHandler(this.Button1_Click);
+            this.btnSubmit.Click += new System.EventHandler(this.ButtonSubmit_Click);
             // 
             // PlayForm
             // 
