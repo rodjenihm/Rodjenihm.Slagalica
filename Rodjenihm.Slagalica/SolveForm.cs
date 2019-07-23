@@ -47,10 +47,7 @@ namespace Rodjenihm.Slagalica
 
         private void BtnReset_Click(object sender, EventArgs e)
         {
-            foreach (var inputLetter in txtInputLetters)
-            {
-                inputLetter.Clear();
-            }
+            txtInputLetters.ForEach(i => i.Clear());
             txtResult.Clear();
         }
 
@@ -62,22 +59,14 @@ namespace Rodjenihm.Slagalica
                 var letters = new List<string>(inputCount);
                 foreach (var inputLetter in txtInputLetters)
                 {
-                    letters.Add(inputLetter.Text
-                        .Replace("dž", "1")
-                        .Replace("lj", "2")
-                        .Replace("nj", "3"));
+                    letters.Add(inputLetter.Text.Replace("dž", "1").Replace("lj", "2").Replace("nj", "3"));
                 }
-                foreach (var solution in WordList.Instance.Words.Where(w => Utilities.IsMatch(w, letters)).Take(1)) // Take(1) za samo jednu rec
-                {
-                    txtResult.Text += solution
-                        .Replace("1", "dž")
-                        .Replace("2", "lj")
-                        .Replace("3", "nj") + "\r\n";
-                }
+                var solutions = Utilities.GetSolutions(letters);
+                Utilities.DisplaySolutions(solutions, txtResult);
             }
             else
             {
-                MessageBox.Show(Owner, "Ulazni podaci nisu ispravni\nUnesite samo slova srpske abecede.", "Neispravan unos");
+                MessageBox.Show("Ulazni podaci nisu ispravni\nUnesite samo slova srpske abecede.", "Neispravan unos");
             }
         }
     }

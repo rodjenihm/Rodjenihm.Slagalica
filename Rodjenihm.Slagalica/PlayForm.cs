@@ -1,15 +1,9 @@
 ﻿using Rodjenihm.Slagalica.CustomControls;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Configuration;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Rodjenihm.Slagalica
@@ -65,7 +59,7 @@ namespace Rodjenihm.Slagalica
 
                 progressTimer = new Timer();
                 progressTimer.Interval = 1000;
-                pbTimeLeft.Maximum = 10;
+                pbTimeLeft.Maximum = 90;
                 progressTimer.Tick += (s, ev) =>
                 {
                     if (pbTimeLeft.Value >= pbTimeLeft.Maximum)
@@ -73,7 +67,7 @@ namespace Rodjenihm.Slagalica
                         btnStart.Enabled = true;
                         btnStop.Enabled = false;
                         progressTimer.Enabled = false;
-                        MessageBox.Show("Totalan promašaj! Epic fail!!");
+                        MessageBox.Show("Vreme je isteklo! Totalan promašaj! Epic fail!!");
                     }
                     else
                     {
@@ -96,11 +90,7 @@ namespace Rodjenihm.Slagalica
             btnStop.Enabled = true;
             pbTimeLeft.Value = pbTimeLeft.Minimum;
             pickerTimer.Enabled = true;
-
-            foreach (var inputLetter in txtInputLetters)
-            {
-                inputLetter.Clear();
-            }
+            txtInputLetters.ForEach(i => i.Clear());
         }
 
         private void BtnStop_Click(object sender, EventArgs e)
@@ -109,27 +99,36 @@ namespace Rodjenihm.Slagalica
             {
                 btnStop.Enabled = false;
                 pickerTimer.Enabled = false;
+                btnSubmit.Enabled = true;
                 progressTimer.Enabled = true;
             }
         }
 
         private void ButtonSubmit_Click(object sender, EventArgs e)
         {
+            btnSubmit.Enabled = false;
             progressTimer.Enabled = false;
             btnStart.Enabled = true;
-            var userWord = txtUserWord.Text
-              .Replace("dž", "1")
-              .Replace("lj", "2")
-              .Replace("nj", "3");
+            var userWord = txtUserWord.Text.Replace("dž", "1").Replace("lj", "2").Replace("nj", "3");
+            var inputLetters = txtInputLetters.Select(i => i.Text.Replace("dž", "1").Replace("lj", "2").Replace("nj", "3"));
 
-            if (WordList.Instance.Words.Contains(userWord))
+            if (!Utilities.IsMatch(userWord, inputLetters))
             {
-                MessageBox.Show($"Bravo. Pronasli ste reč od {userWord.Length} slova!", "", MessageBoxButtons.YesNo);
+                MessageBox.Show(@"Upotrebili ste slova koja nisu ponuđena!");
             }
             else
             {
-                MessageBox.Show("Žao nam je. Unesena reč nije u rečniku.");
+                if (WordList.Instance.Words.Contains(userWord))
+                {
+                    MessageBox.Show($"Bravo. Pronasli ste reč od {userWord.Length} slova!");
+                }
+                else
+                {
+                    MessageBox.Show("Žao nam je. Unesena reč nije u rečniku.");
+                }
             }
+            txtInputLetters.ForEach(i => i.Clear());
+            txtUserWord.Clear();
         }
     }
 }

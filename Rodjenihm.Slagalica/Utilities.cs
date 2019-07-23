@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace Rodjenihm.Slagalica
 {
@@ -39,6 +40,16 @@ namespace Rodjenihm.Slagalica
                 }
             }
             return valid;
+        }
+
+        public static IEnumerable<string> GetSolutions(IEnumerable<string> letters, int n = 1)
+        {
+            return WordList.Instance.Words.Where(w => IsMatch(w, letters)).Take(n);
+        }
+
+        public static void DisplaySolutions(IEnumerable<string> solutions, TextBox output)
+        {
+            solutions.ToList().ForEach(s => output.Text += s.Replace("1", "dž").Replace("2", "lj").Replace("3", "nj") + "\r\n");
         }
     }
 }
